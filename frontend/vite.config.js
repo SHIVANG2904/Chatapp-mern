@@ -1,16 +1,18 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-	plugins: [react()],
-	base:"/CHAT/",
-	server: {
-		port: 3000,
-		proxy: {
-			"/api": {
-				target: "http://localhost:8000",
-			},
-		},
-	},
+  plugins: [react()],
+  base: '/CHAT/', // Update base URL to '/CHAT/'
+  build: {
+    outDir: 'docs', // Output build files to the 'docs' folder
+  },
+  server: {
+    port: 3000,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8000',
+      },
+    },
+  },
 });
